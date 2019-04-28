@@ -1,8 +1,9 @@
 This is a package to run tiny yolo V2 with Movidius Neural Compute Stick on ROS.
 
-Modified from: https://github.com/duangenquan/YoloV2NCS
+Test passed with Ubuntu 16.04, ROS kinetic and python 2.7
 
-You also need https://github.com/intel/object_msgs to publish corresponding messages to ROS.
+The package is modified from: https://github.com/duangenquan/YoloV2NCS
+
 
 Step1:
 clone the object detection messages to your catkin work space and build before building this package
