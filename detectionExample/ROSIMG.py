@@ -2,6 +2,7 @@
 
 import sys,os,time,csv,getopt,cv2,argparse
 import numpy as np
+
 from datetime import datetime
 
 from ObjectWrapper import *
@@ -42,7 +43,7 @@ if __name__ == '__main__':
     parser.add_argument('--cam', dest='cam', type=int,
                         default='0', help='camera id')
     parser.add_argument('--topic', dest='topic', type=str,
-                        default='/usb_cam/image_raw', help='image topic name')
+                        default='/camera/color/image_raw', help='image topic name')
 
     args = parser.parse_args()
 
@@ -54,7 +55,7 @@ if __name__ == '__main__':
     stickNum = ObjectWrapper.devNum
   
     #Use opencv to open a camera
-    if sys.argv[1] == '--cam':
+    if  len(sys.argv)>1 and sys.argv[1] == '--cam':
         # video preprocess
         cap = cv2.VideoCapture(cam_id)
         fps = 0.0
@@ -107,7 +108,7 @@ if __name__ == '__main__':
                     break
 
     # Use ROS Topic image 
-    elif sys.argv[1] == '--topic':
+    else:
 
         rospy.Subscriber(topic, Image, image_callback)
 
@@ -116,6 +117,8 @@ if __name__ == '__main__':
 
         while 1:
             if updated > 0:
+		start_time = time.clock()
+
                 imArr = {}
                 imArr[0] = cv2_img
                 results = detector.Parallel(imArr)
@@ -148,8 +151,9 @@ if __name__ == '__main__':
                     boxes_pub.publish(boxes)
 
                 updated = 0
+		print "time cost = " + str(time.clock() - start_time)
 
-            cv2.waitKey(10)
+            cv2.waitKey(5)
 
             
 

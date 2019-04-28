@@ -31,7 +31,7 @@ Then you will have a graph file in this folder
 Step3:
 Run
 
-rosrun yolo2_ncs ROSIMG.py --graph path_of_the_graph_in_Step2 --topic your_image_topic 
+rosrun yolo2_ncs ROSIMG.py --topic your_image_topic --graph path_of_the_graph_in_Step2
 
 * You can also modify the default parameter values in ROSIMG.py.
 
