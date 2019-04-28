@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--graph', dest='graph', type=str,
-                        default='/home/clarence/catkin_ws/src/yolo2_ncs/graph', help='MVNC graphs.')
+                        default='/home/cc/catkin_ws/src/yolo2_ncs_ros/graph', help='MVNC graphs.')
     parser.add_argument('--cam', dest='cam', type=int,
                         default='0', help='camera id')
     parser.add_argument('--topic', dest='topic', type=str,
